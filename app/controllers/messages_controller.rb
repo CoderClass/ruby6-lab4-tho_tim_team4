@@ -2,11 +2,16 @@ class MessagesController < ApplicationController
   before_action :set_room
   def index
     @messages = @room.messages
+    respond_to do |format|
+      format.html
+      format.json {render json: @messages }
+    end
   end
 
   def create
     @message = Message.create! message_params
     redirect_to room_messages_path(@room)
+
   end
 
   private
