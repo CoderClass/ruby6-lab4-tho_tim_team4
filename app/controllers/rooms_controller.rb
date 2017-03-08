@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by(id: params[:id])
+    redirect_to room_messages_path(@room)
   end
 
 

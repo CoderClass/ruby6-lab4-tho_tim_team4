@@ -1,0 +1,21 @@
+<h1>Welcome to <%= @room.name %></h1>
+
+<h2>Feel free to look around, or start chatting</h2>
+<br><br><br>
+<h3>Chat log: </h3>
+<table class="table" style="border: 1px solid gray">
+  <% @messages.each do |message| %>
+    <tr>
+      <td><%=  message.username%></td>
+      <td><%=  message.content%></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<%= form_for [@room, Message.new] do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.text_field :content, placeholder: 'Message content' %>
+  <%= f.text_field :username, placeholder: 'Username' %>
+  <%= f.submit "Send" %>
+<% end %>

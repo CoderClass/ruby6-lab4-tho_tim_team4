@@ -2,7 +2,7 @@
 <p>This is a basic chat app</p>
 
 <% @rooms.each do |room| %>
-  <p>Room: <%= room.name %></p>
+  <%= link_to room.name, room_path(room), class: 'btn btn-primary' %>
 <% end  %>
 
 <%= form_for @room do |f| %>
