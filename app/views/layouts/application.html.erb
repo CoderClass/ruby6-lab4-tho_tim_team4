@@ -10,24 +10,17 @@
 
   <body>
     <nav class="navbar navbar-light bg-faded navbar-toggleable-md">
-      <a class="navbar-brand" href="/">Navbar</a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="supportedContentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="supportedContentDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline float-xs-right">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+
+      <a class="navbar-brand" href="<%= root_path %>">HOME</a>
+
+      <% if current_user %>
+        <li class="nav-item"><a href="<%= logout_path %>">Logout <%= current_user %></a></li>
+      <% elsif %>
+        <form action="<%= login_path %>" method="POST" class="form-inline float-xs-right">
+          <input name="username" class="form-control" type="text" placeholder="Username">
+          <button class="btn btn-outline-success" type="submit">Login</button>
+        </form>
+      <% end %>
     </nav>
     <div class="container">
       <%= flash_messages %>
